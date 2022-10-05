@@ -1,0 +1,29 @@
+.pool_list_wrap {
+  width: 100%;
+  border-radius: 5rem;
+  overflow: hidden;
+}
+
+.pool_list_list {
+  border-bottom: 1px solid #999;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.pool_list_pair_name {
+  width: 15%;
+}
+
+.pool_list_title_name {
+  width: 25%;
+}
+
+.pool_list_tvl {
+  width: 40%;
+}
+
+.pool_list_apr {
+  width: 20%;
+}

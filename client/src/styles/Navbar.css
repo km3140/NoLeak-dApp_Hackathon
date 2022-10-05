@@ -32,7 +32,6 @@
 
 .nav_menu {
   display: flex;
-  list-style: none;
   text-align: center;
   margin-right: 2rem;
 }

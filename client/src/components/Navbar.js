@@ -19,13 +19,13 @@ function Navbar() {
           </Link>
           <ul className={click ? "nav_menu active" : "nav_menu"}>
             <li className="nav_item">
-              <Link to="/" className="nav_link" onClick={handleClick}>
-                거래세목
+              <Link to="/tran" className="nav_link" onClick={handleClick}>
+                거래내역
               </Link>
             </li>
             <li className="nav_item">
               <Link to="/" className="nav_link" onClick={handleClick}>
-                거래내역
+                거래
               </Link>
             </li>
             <li className="nav_item">
