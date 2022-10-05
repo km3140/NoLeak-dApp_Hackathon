@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { GoX } from "react-icons/go";
-import { MdOutlineAccountBalanceWallet } from "react-icons/md";
+// import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 
 import "../styles/Navbar.css";
 
@@ -20,12 +20,12 @@ function Navbar() {
           <ul className={click ? "nav_menu active" : "nav_menu"}>
             <li className="nav_item">
               <Link to="/" className="nav_link" onClick={handleClick}>
-                HOME
+                거래세목
               </Link>
             </li>
             <li className="nav_item">
               <Link to="/" className="nav_link" onClick={handleClick}>
-                HOME2
+                거래내역
               </Link>
             </li>
             <li className="nav_item">

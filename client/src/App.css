@@ -3,11 +3,12 @@
   padding: 0;
   text-decoration: none;
   list-style: none;
+  box-sizing: border-box;
 }
 
 @font-face {
-  font-family: "NEXON Lv1 Gothic OTF";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff")
+  font-family: "NEXEN_TIRE_Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/NEXEN_TIRE_Bold.woff")
     format("woff");
   font-weight: normal;
   font-style: normal;
@@ -15,5 +16,5 @@
 
 body {
   background-color: #222;
-  font-family: "NEXON Lv1 Gothic OTF";
+  font-family: "NEXEN_TIRE_Bold";
 }
