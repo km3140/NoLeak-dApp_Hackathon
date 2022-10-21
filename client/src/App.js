@@ -1,20 +1,22 @@
-import "./App.css";
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Main from "./components/Main";
-import Footer from "./components/Footer";
-import Transaction from "./pages/Transaction";
+import './App.css';
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Main from './components/Main';
+import Transaction from './pages/Transaction';
+import Menu from './components/Menu';
 
 function App() {
   return (
     <>
       <Router>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/tran" element={<Transaction />} />
-        </Routes>
-        <Footer />
+        <Menu />
+        <div style={{ marginLeft: '70px' }}>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/tran" element={<Transaction />} />
+          </Routes>
+        </div>
       </Router>
     </>
   );
