@@ -79,51 +79,10 @@
   box-shadow: 0px 7px 10px 1px lightgray;
   font-style: italic;
   font-weight: bold;
+  margin-bottom: 0.4rem;
 }
 
 #connect {
-  color: #d195ff;
-  border-color: #d195ff;
-}
-
-@media screen and (max-width: 960px) {
-  .nav_menu {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    border-top: 1px solid #222;
-    position: absolute;
-    top: 80px;
-    left: -110%;
-    opacity: 1;
-  }
-
-  .nav_menu.active {
-    background: #333;
-    left: 0px;
-    opacity: 1;
-
-    z-index: 1;
-  }
-  .nav_item .active {
-    color: #ffdd40;
-    border: none;
-  }
-  .nav_link {
-    padding: 1.5rem;
-    width: 100%;
-    display: table;
-  }
-
-  .nav_connect {
-    display: block;
-    position: absolute;
-    top: 5px;
-    right: 0;
-    transform: translate(-100%, 60%);
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: #ddd;
-    margin-right: 1rem;
-  }
+  color: #8000ff;
+  border-color: #8000ff;
 }
