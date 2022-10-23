@@ -2,24 +2,31 @@
   list-style-type: none;
   padding: 0px;
   margin: 0px;
-  width: 70px;
+  width: 80px;
   background: white;
   height: 100%;
   overflow: auto;
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
-.safes {
+.Menu-bar li {
   text-decoration: none;
   padding: 10px;
   display: block;
-  color: #000;
+  color: #ffc125;
   font-weight: bold;
 }
 
-.safes:hover {
-  background: #333;
-  color: #fff;
+.Menu-bar div {
+  color: black;
+}
+
+.Menu-bar li:hover {
+  background: #f1dcff;
+  cursor: pointer;
 }
 
 li a.home {

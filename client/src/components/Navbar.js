@@ -19,6 +19,12 @@ function Navbar() {
             NO LEAK
           </Link>
           <ul className={connection ? 'nav_menu active' : 'nav_menu'}>
+            {/*반응형 class?*/}
+            <li className="nav_item">
+              <Link to="/" className="nav_link">
+                대시보드
+              </Link>
+            </li>
             <li className="nav_item">
               <Link to="/tran" className="nav_link">
                 거래내역
@@ -26,17 +32,7 @@ function Navbar() {
             </li>
             <li className="nav_item">
               <Link to="/" className="nav_link">
-                거래
-              </Link>
-            </li>
-            <li className="nav_item">
-              <Link to="/" className="nav_link">
-                HOME3
-              </Link>
-            </li>
-            <li className="nav_item">
-              <Link to="/" className="nav_link">
-                HOME4
+                구성원관리
               </Link>
             </li>
           </ul>

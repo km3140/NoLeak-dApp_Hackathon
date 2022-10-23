@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Main from './components/Main';
 import Transaction from './pages/Transaction';
 import Menu from './components/Menu';
+import AmountList from './pages/AmountList';
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <Router>
         <Navbar />
         <Menu />
-        <div style={{ marginLeft: '70px' }}>
+        <div style={{ marginLeft: '80px' }}>
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/tran" element={<Transaction />} />

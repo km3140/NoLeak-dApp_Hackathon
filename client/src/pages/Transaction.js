@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import "../styles/Transaction.css";
-import AmountList from "../pages/AmountList";
+import React, { useEffect, useState } from 'react';
+import '../styles/Transaction.css';
+import AmountList from '../pages/AmountList';
 
 function Transaction() {
   const [moneyList, setMoneyList] = useState([]);

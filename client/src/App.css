@@ -13,8 +13,9 @@
   font-weight: normal;
   font-style: normal;
 }
-
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 body {
-  background-color: #a143ff;
-  font-family: 'NEXEN_TIRE_Bold';
+  /* A143FF */
+  background-color: #e2b9ff;
+  font-family: 'Jeju Gothic', sans-serif;
 }
