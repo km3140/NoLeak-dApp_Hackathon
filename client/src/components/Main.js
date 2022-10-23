@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import TokenInfo from './TokenInfo';
-import { PieChart } from 'react-minimal-pie-chart';
+import Piecharts from './Piechart';
 
 import '../styles/Main.css';
 // 1. 대시보드- 예치토큰 2. 승인대기거래 - 트렌젝션들
@@ -65,13 +65,7 @@ function Main() {
           {/*FFFEFE 0.5*/}
         </div>
         <div className="chart">
-          <PieChart
-            data={[
-              { title: tokens[0].name, value: tokens[0].balance, color: '#E38627' },
-              { title: tokens[1].name, value: tokens[1].balance, color: '#C13C37' },
-              { title: tokens[2].name, value: tokens[2].balance, color: '#6A2135' },
-            ]}
-          />
+          <Piecharts tokens={tokens} />
         </div>
       </div>
     </div>

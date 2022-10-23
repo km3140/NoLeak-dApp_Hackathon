@@ -2,8 +2,8 @@
   text-align: center;
   color: #fff;
   padding: 50px;
+  width: 1078px;
   padding-top: 30px;
-  width: 65rem;
   margin: 0 auto;
 }
 .dashboard_lable {
@@ -29,7 +29,6 @@
 }
 
 .chart {
-  width: 368px;
 }
 
 .tokens_lable {
