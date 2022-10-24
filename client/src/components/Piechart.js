@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ResponsivePie } from '@nivo/pie';
 
-const Piechart = ({ tokens }) => {
+const Piechart = ({ tokens, priceObject }) => {
   const handle = {
     padClick: data => {
       console.log(data);
@@ -20,10 +20,22 @@ const Piechart = ({ tokens }) => {
          * chart에 사용될 데이터
          */
         data={[
-          { id: tokens[0].name, value: tokens[0].balance },
-          { id: tokens[1].name, value: tokens[1].balance },
-          { id: tokens[2].name, value: tokens[2].balance },
-          { id: tokens[3].name, value: tokens[3].balance },
+          {
+            id: tokens[0].name,
+            value: tokens[0].count * priceObject[tokens[0].name]?.usd,
+          },
+          {
+            id: tokens[1].name,
+            value: tokens[1].count * priceObject[tokens[1].name]?.usd,
+          },
+          {
+            id: tokens[2].name,
+            value: tokens[2].count * priceObject[tokens[2].name]?.usd,
+          },
+          {
+            id: tokens[3].name,
+            value: tokens[3].count * priceObject[tokens[3].name]?.usd,
+          },
         ]}
         /**
          * chart margin
@@ -33,6 +45,8 @@ const Piechart = ({ tokens }) => {
          * chart 중간 빈공간 반지름
          */
         innerRadius={0.5}
+        // 표시형식
+        valueFormat=" >-$,"
         /**
          * pad 간격
          */
@@ -44,7 +58,7 @@ const Piechart = ({ tokens }) => {
         /**
          * chart 색상
          */
-        colors={['red', 'orange', 'yellow', 'green']} // 커스터하여 사용할 때
+        colors={{ scheme: 'purpleRed_green' }} // 커스터하여 사용할 때
         // colors={{ scheme: 'nivo' }} // nivo에서 제공해주는 색상 조합 사용할 때
         /**
          * pad border 두께 설정
@@ -76,7 +90,7 @@ const Piechart = ({ tokens }) => {
            */
           labels: {
             text: {
-              fontSize: 14,
+              fontSize: 12,
               fill: '#000000',
             },
           },
@@ -110,7 +124,7 @@ const Piechart = ({ tokens }) => {
             itemDirection: 'left-to-right', // item 내부에 그려지는 방향
             itemOpacity: 1, // item opacity
             symbolSize: 18, // symbol (색상 표기) 크기
-            symbolShape: 'circle', // symbol (색상 표기) 모양
+            symbolShape: 'square', // symbol (색상 표기) 모양
             effects: [
               {
                 // 추가 효과 설정 (hover하면 textColor를 olive로 변경)
