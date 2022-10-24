@@ -7,27 +7,19 @@ const Menu = () => {
   return (
     <ul className="Menu-bar">
       <li>
-        <span>
-          <FontAwesomeIcon icon={faLock} size="2x" />
-        </span>
+        <FontAwesomeIcon icon={faLock} size="2x" />
         <div>금고1</div>
       </li>
       <li>
-        <span>
-          <FontAwesomeIcon icon={faLock} size="2x" />
-        </span>
+        <FontAwesomeIcon icon={faLock} size="2x" />
         <div>금고2</div>
       </li>
       <li>
-        <span>
-          <FontAwesomeIcon icon={faLock} size="2x" />
-        </span>
+        <FontAwesomeIcon icon={faLock} size="2x" />
         <div>금고3</div>
       </li>
       <li>
-        <span>
-          <FontAwesomeIcon icon={faLock} size="2x" />
-        </span>
+        <FontAwesomeIcon icon={faLock} size="2x" />
         <div>금고4</div>
       </li>
       <li>

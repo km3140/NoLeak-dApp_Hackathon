@@ -1,8 +1,7 @@
 import './App.css';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Main from './components/Main';
-import Transaction from './pages/Transaction';
+import Main from './pages/Main';
 import Menu from './components/Menu';
 import { useEffect, useState } from 'react';
 
@@ -62,7 +61,6 @@ function App() {
               path="/"
               element={<Main priceObject={priceObject} tokens={tokens} />}
             />
-            <Route path="/tran" element={<Transaction />} />
           </Routes>
         </div>
       </Router>

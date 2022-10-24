@@ -16,6 +16,7 @@ const Piechart = ({ tokens, priceObject }) => {
     // chart height이 100%이기 때문이 chart를 덮는 마크업 요소에 height 설정
     <div style={{ width: '550px', height: '375px', margin: '0' }}>
       <ResponsivePie
+        isInteractive={false}
         /**
          * chart에 사용될 데이터
          */
@@ -130,7 +131,7 @@ const Piechart = ({ tokens, priceObject }) => {
                 // 추가 효과 설정 (hover하면 textColor를 olive로 변경)
                 on: 'hover',
                 style: {
-                  itemTextColor: 'purple',
+                  itemTextColor: '#000',
                 },
               },
             ],
