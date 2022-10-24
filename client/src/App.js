@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import Main from './components/Main';
 import Transaction from './pages/Transaction';
 import Menu from './components/Menu';
-import AmountList from './pages/AmountList';
 
 function App() {
   return (
