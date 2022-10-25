@@ -23,7 +23,7 @@
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
-    "homepage": "https://km3140.github.io/KDT_Hackathon_Front/client"
+    "homepage": "http://km3140.github.io/KDT_Hackathon_Front/client/index.html"
   },
   "scripts": {
     "start": "react-scripts start",
