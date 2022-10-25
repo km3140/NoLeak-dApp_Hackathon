@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 // import { FaBars } from 'react-icons/fa';
 // import { GoX } from 'react-icons/go';
 // import { MdOutlineAccountBalanceWallet } from "react-icons/md";
-
 import '../styles/Navbar.css';
 
 function Navbar() {

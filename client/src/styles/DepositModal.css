@@ -1,0 +1,54 @@
+#modal {
+}
+
+.deposit_modal {
+  background-color: rgb(140, 0, 255, 0.7);
+  border: 1px rgb(140, 0, 255, 0.7) solid;
+  color: #fec431;
+}
+
+.modal_btn {
+  color: #fec431;
+  background-color: #8000ff;
+  border: 1px #8000ff solid;
+  width: 100%;
+}
+
+.modal_btn:hover {
+  color: #fec431;
+  background-color: #8000ff;
+  border: 1px #8000ff solid;
+  cursor: pointer;
+}
+
+.modal_btn:active {
+  color: #8000ff !important;
+  background-color: #fec431 !important;
+  border: 1px #fec431 solid !important;
+}
+
+.modal_contents {
+  display: flex;
+}
+.modal_contents > div:first-child {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
+}
+.modal_contents > div:last-child {
+  flex-grow: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.owner_add_btn {
+  display: block;
+  height: 1.8rem;
+  width: 7.5rem;
+  text-align: center;
+  border-radius: 15px;
+  padding-top: 0.125rem;
+  margin-left: auto;
+}
