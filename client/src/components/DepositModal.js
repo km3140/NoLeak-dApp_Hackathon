@@ -2,7 +2,7 @@ import React from 'react';
 import { Form } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import '../styles/DepositModal.css';
+import '../styles/Modals.css';
 
 function DepositModal(props) {
   return (

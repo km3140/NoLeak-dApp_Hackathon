@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Form, InputGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import '../styles/DepositModal.css';
+import '../styles/Modals.css';
 
 function AddSafeModal(props) {
   const [countList, setCountList] = useState([0]);
