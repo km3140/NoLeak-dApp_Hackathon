@@ -3,11 +3,11 @@ import { ResponsivePie } from '@nivo/pie';
 
 const Piechart = ({ tokens, priceObject }) => {
   const handle = {
-    padClick: data => {
+    padClick: (data) => {
       console.log(data);
     },
 
-    legendClick: data => {
+    legendClick: (data) => {
       console.log(data);
     },
   };
@@ -23,19 +23,19 @@ const Piechart = ({ tokens, priceObject }) => {
         data={[
           {
             id: tokens[0].name,
-            value: tokens[0].count * priceObject[tokens[0].name]?.usd,
+            value: tokens[0].count * priceObject[tokens[0].id]?.usd,
           },
           {
             id: tokens[1].name,
-            value: tokens[1].count * priceObject[tokens[1].name]?.usd,
+            value: tokens[1].count * priceObject[tokens[1].id]?.usd,
           },
           {
             id: tokens[2].name,
-            value: tokens[2].count * priceObject[tokens[2].name]?.usd,
+            value: tokens[2].count * priceObject[tokens[2].id]?.usd,
           },
           {
             id: tokens[3].name,
-            value: tokens[3].count * priceObject[tokens[3].name]?.usd,
+            value: tokens[3].count * priceObject[tokens[3].id]?.usd,
           },
         ]}
         /**
@@ -59,7 +59,7 @@ const Piechart = ({ tokens, priceObject }) => {
         /**
          * chart 색상
          */
-        colors={{ scheme: 'purpleRed_green' }} // 커스터하여 사용할 때
+        colors={{ scheme: 'yellow_orange_red' }} // 커스터하여 사용할 때
         // colors={{ scheme: 'nivo' }} // nivo에서 제공해주는 색상 조합 사용할 때
         /**
          * pad border 두께 설정

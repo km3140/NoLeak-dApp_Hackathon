@@ -1,4 +1,4 @@
-.Menu-bar {
+.left-bar {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
@@ -12,7 +12,7 @@
   text-align: center;
 }
 
-.Menu-bar li {
+.left-bar li {
   text-decoration: none;
   padding: 10px 0;
   display: block;
@@ -20,11 +20,11 @@
   font-weight: bold;
 }
 
-.Menu-bar div {
+.left-bar div {
   color: black;
 }
 
-.Menu-bar li:hover {
+.left-bar li:hover {
   background: #f1dcff;
   cursor: pointer;
 }

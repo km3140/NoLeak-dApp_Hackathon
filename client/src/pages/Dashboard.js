@@ -2,26 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import TokenInfo from '../components/TokenInfo';
 import Piecharts from '../components/Piechart';
-
-import '../styles/Main.css';
 import Transaction from './Transaction';
 
+import '../styles/Dashboard.css';
 // 1. 대시보드- 예치토큰 2. 승인대기거래 - 트렌젝션들
-function Main({ tokens, priceObject }) {
+function Dashboard({ tokens, priceObject }) {
   let sum = 0;
   let allBalance;
-  tokens.forEach(token => {
-    sum += token.count * priceObject[token.name]?.usd;
-    allBalance = '$' + sum;
+  tokens.forEach((token) => {
+    sum += token.count * priceObject[token.id]?.usd;
+    allBalance = '$' + sum.toFixed(2);
   });
   return (
-    <>
-      <div className="container">
-        <div className="board_lable">대시보드</div>
-        <div className="board">
+    <div>
+      <div className="dashboard_container">
+        <div className="dashboard_area_lable">대시보드</div>
+        <div className="dashboard_area">
           <div className="tokens_area">
             <div className="tokens_lable">
-              <span style={{ color: 'black' }}>예치 토큰</span>
+              <span>예치 토큰</span>
               <Button variant="primary" size="sm" id="deposit_btn">
                 Deposit
               </Button>
@@ -31,9 +30,9 @@ function Main({ tokens, priceObject }) {
                 <span>토큰</span>
                 <span>잔액</span>
               </div>
-              {tokens.map(token => {
+              {tokens.map((token, index) => {
                 return (
-                  <div className="token_column">
+                  <div className="token_column" key={index}>
                     <TokenInfo token={token} />
                   </div>
                 );
@@ -52,9 +51,11 @@ function Main({ tokens, priceObject }) {
           </div>
         </div>
       </div>
-      <Transaction />
-    </>
+      <div style={{ height: '31rem', paddingBottom: '3rem' }}>
+        <Transaction />
+      </div>
+    </div>
   );
 }
 
-export default Main;
+export default Dashboard;

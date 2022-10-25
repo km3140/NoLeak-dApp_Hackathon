@@ -1,4 +1,86 @@
-/* .container
-.board_lable
-.board
-는 main과 공유 */
+.transaction_container {
+  text-align: center;
+  padding: 0;
+  padding-top: 1rem;
+  width: 67rem;
+  margin: 0 auto;
+  height: 95%;
+}
+.transaction_area_lable {
+  text-align: left;
+  font-size: 2rem;
+  color: white;
+}
+
+.transaction_area {
+  background-color: rgb(217, 217, 217, 0.5);
+  border-radius: 15px;
+  height: 400px;
+  display: block;
+  padding: 1rem 2rem;
+  overflow: hidden;
+  height: 100%;
+}
+
+.main_move_btn {
+  width: 100px;
+  margin-left: auto;
+  border-bottom: none;
+  color: #999;
+}
+
+.main_move_btn:hover {
+  color: #777;
+}
+.transaction {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  width: 100%;
+  height: 100px;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.4rem 1rem;
+}
+
+.transaction_inner {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.transaction_info {
+}
+.transaction_info > div {
+  width: fit-content;
+  margin-right: auto;
+}
+
+#progress {
+  margin-top: auto;
+}
+
+.btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 0.3rem;
+}
+.btns > div {
+  width: 7rem;
+  border-radius: 15px;
+  height: 1.7rem;
+}
+.btns > div:hover {
+  cursor: pointer;
+}
+.btns > div:first-of-type {
+  background-color: black;
+  color: white;
+  padding-top: 0.15rem;
+}
+.btns > div:last-of-type {
+  background-color: white;
+  color: black;
+  padding-top: 0.15rem;
+  border: 1px black solid;
+}

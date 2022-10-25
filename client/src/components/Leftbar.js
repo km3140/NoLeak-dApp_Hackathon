@@ -1,11 +1,11 @@
 import React from 'react';
-import '../styles/Menu.css';
+import '../styles/Leftbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 
 const Menu = () => {
   return (
-    <ul className="Menu-bar">
+    <ul className="left-bar">
       <li>
         <FontAwesomeIcon icon={faLock} size="2x" />
         <div>금고1</div>

@@ -1,43 +1,47 @@
 import './App.css';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Main from './pages/Main';
-import Menu from './components/Menu';
+import Dashboard from './pages/Dashboard';
+import Menu from './components/Leftbar';
 import { useEffect, useState } from 'react';
+import Transaction from './pages/Transaction';
 
 function App() {
   const tokens = [
     {
       img: 'https://cryptologos.cc/logos/klaytn-klay-logo.png',
-      name: 'klay-token',
+      id: 'klay-token',
+      name: 'KLAY',
       count: 20000,
     },
     {
       img: 'https://cryptologos.cc/logos/tether-usdt-logo.png',
-      name: 'tether',
+      id: 'tether',
+      name: 'USDT',
       count: 10000,
     },
     {
       img: 'https://cryptologos.cc/logos/usd-coin-usdc-logo.png',
-      name: 'usd',
+      id: 'usd',
+      name: 'USDC',
       count: 30000,
     },
     {
-      img: 'https://www.freelogovectors.net/svg12/ethereum_logo_freelogovectors.net.svg',
-      name: 'ethereum',
+      img: 'https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/116_Ethereum_logo_logos-512.png',
+      id: 'ethereum',
+      name: 'ETH',
       count: 100,
     },
   ];
 
   const [priceObject, setPriceObject] = useState({});
-
   let sum = '';
-  tokens.forEach(token => {
-    sum += token.name + ',';
+  tokens.forEach((token) => {
+    sum += token.id + ',';
   });
-  const names = sum;
+  const ids = sum;
   const fetchTokenPrice = async () => {
-    const res = `https://api.coingecko.com/api/v3/simple/price?ids=${names}&vs_currencies=usd`;
+    const res = `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd`;
     const fetchRes = await fetch(res);
     const jsonRes = await fetchRes.json();
     console.log(jsonRes);
@@ -46,8 +50,6 @@ function App() {
 
   useEffect(() => {
     fetchTokenPrice();
-    console.log(priceObject, 'is priceObj');
-    console.log(priceObject[tokens[0].name]);
   }, []);
 
   return (
@@ -59,8 +61,9 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<Main priceObject={priceObject} tokens={tokens} />}
+              element={<Dashboard priceObject={priceObject} tokens={tokens} />}
             />
+            <Route path="/tran" element={<Transaction />} />
           </Routes>
         </div>
       </Router>

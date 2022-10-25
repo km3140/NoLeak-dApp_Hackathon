@@ -4,6 +4,7 @@ const TokenInfo = ({ token }) => {
   return (
     <>
       <img
+        alt=""
         style={{
           width: '20px',
           height: '23px',
@@ -12,7 +13,9 @@ const TokenInfo = ({ token }) => {
         }}
         src={token?.img}
       />
-      <span style={{ marginRight: 'auto', paddingLeft: '15px' }}>{token?.name}</span>
+      <span style={{ marginRight: 'auto', paddingLeft: '15px' }}>
+        {token?.name}
+      </span>
       <span style={{ marginLeft: 'auto', paddingRight: '30px' }}>
         {token?.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
       </span>

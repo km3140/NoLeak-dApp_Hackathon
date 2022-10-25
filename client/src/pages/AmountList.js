@@ -1,8 +1,9 @@
-import React from "react";
-import "../styles/AmountList.css";
+//그냥 남겨두었습니다
+import React from 'react';
+import '../styles/AmountList.css';
 
 function AmountList({ name, part, amount, root }) {
-  let tvlString = amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  let tvlString = amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
   return (
     <div className="pool_list_wrap">
