@@ -1,5 +1,3 @@
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Form, InputGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
@@ -7,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import '../styles/Modals.css';
 
 function AddSafeModal(props) {
+  //입력칸 추가, 제거
   const [countList, setCountList] = useState([0]);
   const addInput = () => {
     const copiedArr = [...countList];
