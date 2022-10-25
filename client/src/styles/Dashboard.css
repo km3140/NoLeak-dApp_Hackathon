@@ -27,9 +27,6 @@
   flex-direction: column;
 }
 
-.chart {
-}
-
 .tokens_lable {
   display: flex;
   justify-content: space-between;

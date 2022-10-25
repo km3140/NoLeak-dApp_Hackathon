@@ -1,7 +1,10 @@
+import { faUserMinus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Form, InputGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { FaFontAwesome } from 'react-icons/fa';
 import '../styles/Modals.css';
 
 function AddSafeModal(props) {
@@ -30,35 +33,30 @@ function AddSafeModal(props) {
       id="modal"
     >
       <Modal.Header closeButton className="deposit_modal">
-        <Modal.Title id="contained-modal-title-vcenter">
-          새로운 금고 만들기
-        </Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">새로운 금고 만들기</Modal.Title>
       </Modal.Header>
       <Form>
         <Modal.Body className="deposit_modal" style={{ padding: '1rem 2rem' }}>
           <Form.Label htmlFor="basic-url">금고 이름 설정</Form.Label>
           <InputGroup className="mb-3">
-            <Form.Control
-              placeholder="ex) No leak의 모임 통장"
-              aria-label="name"
-            />
+            <Form.Control placeholder="ex) No leak의 모임 통장" aria-label="name" />
           </InputGroup>
           <div style={{ display: 'flex' }}>
             <Form.Label style={{ marginTop: '0.2rem' }} htmlFor="basic-url">
               금고 소유주 추가
             </Form.Label>
-            <div className="modal_btn owner_add_btn" onClick={addInput}>
-              <div>입력칸 추가</div>
+            <div className="modal_btn owner_manage_btn" onClick={addInput}>
+              <FontAwesomeIcon icon={faUserPlus} />
             </div>
             <div
               style={{ marginLeft: '0.4rem' }}
-              className="modal_btn owner_add_btn"
+              className="modal_btn owner_manage_btn"
               onClick={removeInput}
             >
-              <div>입력칸 제거</div>
+              <FontAwesomeIcon icon={faUserMinus} />
             </div>
           </div>
-          {countList.map((index) => {
+          {countList.map(index => {
             return (
               <InputGroup className="mb-3" key={index}>
                 <Form.Control placeholder="이름" aria-label="name" />

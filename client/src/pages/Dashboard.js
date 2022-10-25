@@ -10,7 +10,7 @@ function Dashboard({ tokens, priceObject }) {
   //총합계$ 표시
   let sum = 0;
   let allBalance;
-  tokens.forEach((token) => {
+  tokens.forEach(token => {
     sum += token.count * priceObject[token.id]?.usd;
     allBalance = '$' + sum.toFixed(2);
   });
@@ -33,10 +33,7 @@ function Dashboard({ tokens, priceObject }) {
               >
                 Deposit
               </Button>
-              <DepositModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-              />
+              <DepositModal show={modalShow} onHide={() => setModalShow(false)} />
             </div>
             <div className="deposit_tokens">
               <div style={{ borderBottom: '2px black solid' }}>
@@ -58,7 +55,7 @@ function Dashboard({ tokens, priceObject }) {
               </div>
             </div>
           </div>
-          <div className="chart">
+          <div>
             <Piechart tokens={tokens} priceObject={priceObject} />
           </div>
         </div>

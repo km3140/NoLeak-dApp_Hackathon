@@ -17,7 +17,7 @@
   border-radius: 15px;
   height: 400px;
   display: block;
-  padding: 1rem 2rem;
+  padding: 0.6rem 2rem;
   overflow: hidden;
   height: 100%;
 }
@@ -27,6 +27,7 @@
   margin-left: auto;
   border-bottom: none;
   color: #999;
+  margin-top: 0.2rem;
 }
 
 .main_move_btn:hover {
@@ -50,6 +51,7 @@
 
 .transaction_info {
 }
+
 .transaction_info > div {
   width: fit-content;
   margin-right: auto;
@@ -83,4 +85,15 @@
   color: black;
   padding-top: 0.15rem;
   border: 1px black solid;
+}
+
+.add_trans_btn {
+  background-color: #8000ff;
+  border: none;
+  border-radius: 15px;
+}
+
+.transaction_area > div:first-of-type {
+  display: flex;
+  justify-content: space-between;
 }

@@ -2,8 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaAngleDoubleRight } from 'react-icons/fa';
 import { Button, ProgressBar } from 'react-bootstrap';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoneyCheckDollar, faPlus } from '@fortawesome/free-solid-svg-icons';
 import '../styles/Transaction.css';
+import AddTransModal from '../components/AddTransModal';
 
 const Transaction = () => {
   // 트렌젝션 정보
@@ -39,7 +41,7 @@ const Transaction = () => {
       agreeRate: 50,
     },
   ];
-  //
+
   // (자세히보기, 메인으로) 토글기능
   const [location, setLocation] = useState('');
   const getLocation = () => {
@@ -49,24 +51,39 @@ const Transaction = () => {
     getLocation();
     window.scrollTo(0, 0);
   });
-  //
+
+  //모달창 토글
+  const [modalShow, setModalShow] = useState(false);
+
   return (
     <div className="transaction_container" style={{ marginBottom: '25px' }}>
       <div className="transaction_area_lable">승인대기 거래</div>
       <div className="transaction_area">
-        {location === '/' ? (
-          <Link to="/tran" style={{ textDecoration: 'none' }}>
-            <div className="main_move_btn">
-              자세히보기 <FaAngleDoubleRight />
-            </div>
-          </Link>
-        ) : (
-          <Link to="/" style={{ textDecoration: 'none' }}>
-            <div className="main_move_btn">
-              메인으로 <FaAngleDoubleRight />
-            </div>
-          </Link>
-        )}
+        <div>
+          <Button
+            variant="primary"
+            size="sm"
+            id="deposit_btn"
+            onClick={() => setModalShow(true)}
+          >
+            {/* 이 아이디값 말고는 효과가 안먹음; */}
+            거래 추가
+          </Button>
+          <AddTransModal show={modalShow} onHide={() => setModalShow(false)} />
+          {location === '/' ? (
+            <Link to="/tran" style={{ textDecoration: 'none' }}>
+              <div className="main_move_btn">
+                자세히보기 <FaAngleDoubleRight />
+              </div>
+            </Link>
+          ) : (
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <div className="main_move_btn">
+                메인으로 <FaAngleDoubleRight />
+              </div>
+            </Link>
+          )}
+        </div>
         {/* dummy data */}
         {tarnsInfo.map((cur, index) => {
           return (
@@ -91,17 +108,6 @@ const Transaction = () => {
             </div>
           );
         })}
-        <div className="transaction">gfdsgsfd</div>
-        <div className="transaction">gfdsgsfd</div>
-        <div className="transaction">gfdsgsfd</div>
-        <div className="transaction">gfdsgsfd</div>
-        <div className="transaction">gfdsgsfd</div>
-        <div className="transaction">gfdsgsfd</div>
-        <div className="transaction">gfdsgsfd</div>
-        <div className="transaction">gfdsgsfd</div>
-        <div className="transaction">gfdsgsfd</div>
-        <div className="transaction">gfdsgsfd</div>
-        <div className="transaction">gfdsgsfd</div>
       </div>
     </div>
   );
