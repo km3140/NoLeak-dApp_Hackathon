@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://km3140.github.io/KDT_for_Deploy",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
@@ -22,8 +23,7 @@
     "react-minimal-pie-chart": "^8.3.0",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4",
-    "homepage": "http://km3140.github.io/KDT_Hackathon_Front/client/index.html"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

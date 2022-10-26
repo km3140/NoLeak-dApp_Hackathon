@@ -36,7 +36,7 @@ function App() {
 
   const [priceObject, setPriceObject] = useState({});
   let sum = '';
-  tokens.forEach((token) => {
+  tokens.forEach(token => {
     sum += token.id + ',';
   });
   const ids = sum;
@@ -54,19 +54,17 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Navbar />
-        <Menu />
-        <div style={{ marginLeft: '80px' }}>
-          <Routes>
-            <Route
-              path="/"
-              element={<Dashboard priceObject={priceObject} tokens={tokens} />}
-            />
-            <Route path="/tran" element={<Transaction />} />
-          </Routes>
-        </div>
-      </Router>
+      <Navbar />
+      <Menu />
+      <div style={{ marginLeft: '80px' }}>
+        <Routes>
+          <Route
+            path="/"
+            element={<Dashboard priceObject={priceObject} tokens={tokens} />}
+          />
+          <Route path="/tran" element={<Transaction />} />
+        </Routes>
+      </div>
     </>
   );
 }
