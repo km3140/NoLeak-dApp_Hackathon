@@ -31,7 +31,7 @@ function DepositModal(props) {
                 placeholder="ex) 3회 KDT해커톤 상금 입금"
               />
               <Form.Select style={{ width: '6rem' }} size="sm">
-                <option>KALY</option>
+                <option>KLAY</option>
                 <option>USDC</option>
                 <option>USDT</option>
                 <option>ETH</option>
