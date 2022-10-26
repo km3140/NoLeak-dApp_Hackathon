@@ -29,7 +29,7 @@ const AddTransModal = props => {
               <Form.Control size="sm" type="text" placeholder="ex) 기부금 전달" />
               <Form.Control size="sm" type="text" placeholder="ex) 0x..." />
               <Form.Select style={{ width: '6rem' }} size="sm">
-                <option>KALY</option>
+                <option>KLAY</option>
                 <option>USDC</option>
                 <option>USDT</option>
                 <option>ETH</option>
