@@ -40,6 +40,30 @@ const Transaction = () => {
       amount: '$5',
       agreeRate: 50,
     },
+    {
+      name: '강사님 월급6',
+      receiver: '박민서',
+      amount: '$5',
+      agreeRate: 50,
+    },
+    {
+      name: '강사님 월급7',
+      receiver: '박민서',
+      amount: '$5',
+      agreeRate: 50,
+    },
+    {
+      name: '강사님 월급8',
+      receiver: '박민서',
+      amount: '$5',
+      agreeRate: 50,
+    },
+    {
+      name: '강사님 월급9',
+      receiver: '박민서',
+      amount: '$5',
+      agreeRate: 50,
+    },
   ];
 
   // (자세히보기, 메인으로) 토글기능
@@ -50,6 +74,7 @@ const Transaction = () => {
   useEffect(() => {
     getLocation();
     window.scrollTo(0, 0);
+    console.log(process.env.PUBLIC_URL);
   });
 
   //모달창 토글
@@ -66,11 +91,11 @@ const Transaction = () => {
             id="deposit_btn"
             onClick={() => setModalShow(true)}
           >
-            {/* 이 아이디값 말고는 효과가 안먹음; */}
+            {/* 이 아이디값 말고는 효과가 안먹음;; */}
             거래 추가
           </Button>
           <AddTransModal show={modalShow} onHide={() => setModalShow(false)} />
-          {location === '/' ? (
+          {location === process.env.PUBLIC_URL ? (
             <Link to="/tran" style={{ textDecoration: 'none' }}>
               <div className="main_move_btn">
                 자세히보기 <FaAngleDoubleRight />
