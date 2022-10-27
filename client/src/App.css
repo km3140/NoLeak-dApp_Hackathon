@@ -7,14 +7,15 @@
 }
 
 @font-face {
-  font-family: "NEXEN_TIRE_Bold";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/NEXEN_TIRE_Bold.woff")
-    format("woff");
+  font-family: 'NEXEN_TIRE_Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/NEXEN_TIRE_Bold.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
-
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 body {
-  background-color: #222;
-  font-family: "NEXEN_TIRE_Bold";
+  /* A143FF */
+  background-color: rgb(161, 67, 255, 0.5);
+  font-family: 'Jeju Gothic', sans-serif;
 }

@@ -1,0 +1,60 @@
+.dashboard_container {
+  text-align: center;
+  padding: 0;
+  padding-top: 1rem;
+  width: 67rem;
+  margin: 0 auto;
+}
+.dashboard_area_lable {
+  text-align: left;
+  font-size: 2rem;
+  color: white;
+}
+
+.dashboard_area {
+  background-color: rgb(217, 217, 217, 0.5);
+  border-radius: 15px;
+  height: 400px;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.tokens_area {
+  width: 400px;
+  height: 368px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tokens_lable {
+  display: flex;
+  justify-content: space-between;
+}
+.tokens_lable span {
+  margin-top: 3px;
+}
+
+#deposit_btn {
+  background-color: #8000ff;
+  border: none;
+  border-radius: 15px;
+}
+
+.deposit_tokens {
+  background-color: rgb(255, 254, 254, 0.5);
+  border-radius: 15px;
+  width: 360;
+  flex-grow: 1;
+  margin-top: 7px;
+  padding: 10px 20px;
+  line-height: 45px;
+}
+
+.token_column {
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px black solid;
+  padding: 0 20px;
+  margin-top: 5px;
+}
