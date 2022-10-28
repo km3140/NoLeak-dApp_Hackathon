@@ -1,13 +1,30 @@
-import { faUserMinus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
-import { Form, InputGroup } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import { FaFontAwesome } from 'react-icons/fa';
-import '../styles/Modals.css';
+import { faUserMinus, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState } from "react";
+import { Form, InputGroup } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import "../styles/Modals.css";
+import { MultisigContract } from "../abi/MultisigABI";
 
-function AddSafeModal(props) {
+function AddSafeModal(props, { Account }) {
+  const [user, setUser] = useState("");
+
+  const onChangeUser = e => {
+    setUser(e.target.value);
+    console.log(user);
+  };
+
+  const addUser = async () => {
+    const add = await MultisigContract.methods
+      .addWalletOwner(user)
+      .send({ from: Account });
+    console.log(add);
+
+    const userNum = await MultisigContract.methods.getWalletOners().call();
+
+    console.log(userNum);
+  };
   //입력칸 추가, 제거
   const [countList, setCountList] = useState([0]);
   const addInput = () => {
@@ -33,23 +50,28 @@ function AddSafeModal(props) {
       id="modal"
     >
       <Modal.Header closeButton className="deposit_modal">
-        <Modal.Title id="contained-modal-title-vcenter">새로운 금고 만들기</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">
+          새로운 금고 만들기
+        </Modal.Title>
       </Modal.Header>
       <Form>
-        <Modal.Body className="deposit_modal" style={{ padding: '1rem 2rem' }}>
+        <Modal.Body className="deposit_modal" style={{ padding: "1rem 2rem" }}>
           <Form.Label htmlFor="basic-url">금고 이름 설정</Form.Label>
           <InputGroup className="mb-3">
-            <Form.Control placeholder="ex) No leak의 모임 통장" aria-label="name" />
+            <Form.Control
+              placeholder="ex) No leak의 모임 통장"
+              aria-label="name"
+            />
           </InputGroup>
-          <div style={{ display: 'flex' }}>
-            <Form.Label style={{ marginTop: '0.2rem' }} htmlFor="basic-url">
+          <div style={{ display: "flex" }}>
+            <Form.Label style={{ marginTop: "0.2rem" }} htmlFor="basic-url">
               금고 소유주 추가
             </Form.Label>
             <div className="modal_btn owner_manage_btn" onClick={addInput}>
               <FontAwesomeIcon icon={faUserPlus} />
             </div>
             <div
-              style={{ marginLeft: '0.4rem' }}
+              style={{ marginLeft: "0.4rem" }}
               className="modal_btn owner_manage_btn"
               onClick={removeInput}
             >
@@ -62,15 +84,16 @@ function AddSafeModal(props) {
                 <Form.Control placeholder="이름" aria-label="name" />
                 <Form.Control
                   placeholder="지갑 주소"
-                  style={{ width: '12rem' }}
+                  style={{ width: "12rem" }}
                   aria-label="address"
+                  onChange={onChangeUser}
                 />
               </InputGroup>
             );
           })}
         </Modal.Body>
         <Modal.Footer className="deposit_modal">
-          <Button className="modal_btn" type="submit" onClick={props.onHide}>
+          <Button className="modal_btn" onClick={addUser}>
             금고 생성
           </Button>
         </Modal.Footer>

@@ -1,43 +1,70 @@
-import './App.css';
-import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Dashboard from './pages/Dashboard';
-import Menu from './components/Leftbar';
-import { useEffect, useState } from 'react';
-import Transaction from './pages/Transaction';
+import "./App.css";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Dashboard from "./pages/Dashboard";
+import Menu from "./components/Leftbar";
+import { useEffect, useState } from "react";
+import Transaction from "./pages/Transaction";
 
 function App() {
+  const [priceObject, setPriceObject] = useState({});
+  const [userAccount, setUserAccount] = useState("");
+
+  let walletConnect = async () => {
+    try {
+      if (window.ethereum) {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        setUserAccount(accounts[0]);
+      } else {
+        alert("Install Metamask!");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getCurrentWalletConnected = async () => {
+    if (window.ethereum) {
+      try {
+        const addressArray = await window.ethereum.request({
+          method: "eth_accounts",
+        });
+
+        if (addressArray.length > 0) {
+          setUserAccount(addressArray[0]);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (userAccount !== null) {
+      getCurrentWalletConnected();
+    }
+  }, []);
+
   const tokens = [
     {
-      img: 'https://cryptologos.cc/logos/klaytn-klay-logo.png',
-      id: 'klay-token',
-      name: 'KLAY',
-      count: 20000,
+      img: "https://cryptologos.cc/logos/klaytn-klay-logo.png",
+      id: "klay-token",
+      name: "KLAY",
+      count: 2000,
     },
     {
-      img: 'https://cryptologos.cc/logos/tether-usdt-logo.png',
-      id: 'tether',
-      name: 'USDT',
-      count: 10000,
-    },
-    {
-      img: 'https://cryptologos.cc/logos/usd-coin-usdc-logo.png',
-      id: 'usd',
-      name: 'USDC',
-      count: 30000,
-    },
-    {
-      img: 'https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/116_Ethereum_logo_logos-512.png',
-      id: 'ethereum',
-      name: 'ETH',
-      count: 100,
+      img: "https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/116_Ethereum_logo_logos-512.png",
+      id: "ethereum",
+      name: "ETH",
+      count: 10,
     },
   ];
 
-  const [priceObject, setPriceObject] = useState({});
-  let sum = '';
+  let sum = "";
   tokens.forEach(token => {
-    sum += token.id + ',';
+    sum += token.id + ",";
   });
   const ids = sum;
   const fetchTokenPrice = async () => {
@@ -54,9 +81,9 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <Menu />
-      <div style={{ marginLeft: '80px' }}>
+      <Navbar walletConnect={walletConnect} Account={userAccount} />
+      <Menu Account={userAccount} />
+      <div style={{ marginLeft: "80px" }}>
         <Routes>
           <Route
             path="/"

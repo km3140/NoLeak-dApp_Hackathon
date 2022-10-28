@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
+import React from "react";
+import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 // import { FaBars } from 'react-icons/fa';
 // import { GoX } from 'react-icons/go';
 // import { MdOutlineAccountBalanceWallet } from "react-icons/md";
-import '../styles/Navbar.css';
+import "../styles/Navbar.css";
 
-function Navbar() {
-  const [connection, setConnection] = useState(false);
+function Navbar({ walletConnect, Account }) {
+  let str = Account;
+  let acc = str.slice(0, 6) + " ..." + str.slice(38, 42).toUpperCase();
 
-  const walletConnect = () => setConnection(!connection);
   return (
     <>
       <nav className="navbar">
@@ -17,7 +17,7 @@ function Navbar() {
           <Link to="/" className="nav_logo">
             NO LEAK
           </Link>
-          <ul className={connection ? 'nav_menu active' : 'nav_menu'}>
+          <ul className={Account ? "nav_menu active" : "nav_menu"}>
             <li className="nav_item">
               <Link to="/" className="nav_link">
                 대시보드
@@ -35,8 +35,13 @@ function Navbar() {
             </li>
           </ul>
           <div className="nav_connect" onClick={walletConnect}>
-            {connection ? (
-              <Button variant="outline-warning">CONNECT</Button>
+            {Account ? (
+              <Button
+                variant="outline-warning"
+                style={{ whiteSpace: "nowrap" }}
+              >
+                {acc}
+              </Button>
             ) : (
               <Button id="connect" variant="outline-primary">
                 CONNECTED

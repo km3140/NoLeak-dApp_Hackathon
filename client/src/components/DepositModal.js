@@ -1,8 +1,8 @@
-import React from 'react';
-import { Form } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import '../styles/Modals.css';
+import React from "react";
+import { Form } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import "../styles/Modals.css";
 
 function DepositModal(props) {
   return (
@@ -17,7 +17,7 @@ function DepositModal(props) {
         <Modal.Title id="contained-modal-title-vcenter">자산 입금</Modal.Title>
       </Modal.Header>
       <Form>
-        <Modal.Body className="deposit_modal" style={{ padding: '1rem 2rem' }}>
+        <Modal.Body className="deposit_modal" style={{ padding: "1rem 2rem" }}>
           <div className="modal_contents">
             <div>
               <div>메모</div>
@@ -30,14 +30,12 @@ function DepositModal(props) {
                 type="text"
                 placeholder="ex) 3회 KDT해커톤 상금 입금"
               />
-              <Form.Select style={{ width: '6rem' }} size="sm">
+              <Form.Select style={{ width: "6rem" }} size="sm">
                 <option>KLAY</option>
-                <option>USDC</option>
-                <option>USDT</option>
                 <option>ETH</option>
               </Form.Select>
               <Form.Control
-                style={{ width: '6rem' }}
+                style={{ width: "6rem" }}
                 size="sm"
                 type="text"
                 placeholder="개수"
