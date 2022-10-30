@@ -4,30 +4,23 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "../styles/Modals.css";
 import { MultisigContract } from "../abi/MultisigABI";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import useInput from "../abi/UseInput";
-import { addUserName } from "../redux/reducers/WalletActions";
 
 function AddSafeModal(props) {
   const [modalShow, setModalShow] = useState(true);
   const [user, onChangeUser] = useInput("");
-  const dispatch = useDispatch();
   const userAccount = useSelector(state => state.account);
 
-  const addUser = async () => {
+  const removeUser = async () => {
     await MultisigContract.methods
-      .addWalletOwner(user)
+      .removeWalletOwner(user)
       .send({ from: userAccount });
-    setModalShow(false);
   };
 
   useEffect(() => {
     setModalShow(true);
   }, [modalShow]);
-
-  const addUsers = event => {
-    dispatch(addUserName(event));
-  };
 
   return (
     <>
@@ -41,7 +34,7 @@ function AddSafeModal(props) {
         >
           <Modal.Header closeButton className="deposit_modal">
             <Modal.Title id="contained-modal-title-vcenter">
-              금고 사용자 추가
+              금고 사용자 제거
             </Modal.Title>
           </Modal.Header>
           <Form>
@@ -49,17 +42,9 @@ function AddSafeModal(props) {
               className="deposit_modal"
               style={{ padding: "1rem 2rem" }}
             >
-              <Form.Label htmlFor="basic-url">사용자 이름</Form.Label>
-              <InputGroup className="mb-3">
-                <Form.Control
-                  placeholder="홍길동"
-                  aria-label="name"
-                  onChange={addUsers}
-                />
-              </InputGroup>
               <div style={{ display: "flex" }}>
                 <Form.Label style={{ marginTop: "0.2rem" }} htmlFor="basic-url">
-                  금고 소유주 추가
+                  금고 소유주 제거
                 </Form.Label>
               </div>
               <InputGroup className="mb-3">
@@ -72,8 +57,8 @@ function AddSafeModal(props) {
               </InputGroup>
             </Modal.Body>
             <Modal.Footer className="deposit_modal">
-              <Button className="modal_btn" onClick={addUser}>
-                사용자 추가
+              <Button className="modal_btn" onClick={removeUser}>
+                사용자 제거
               </Button>
             </Modal.Footer>
           </Form>

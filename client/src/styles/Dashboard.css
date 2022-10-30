@@ -29,8 +29,8 @@
 
 .tokens_lable {
   display: flex;
-  justify-content: space-between;
 }
+
 .tokens_lable span {
   margin-top: 3px;
 }
@@ -38,7 +38,16 @@
 #deposit_btn {
   background-color: #8000ff;
   border: none;
-  border-radius: 15px;
+  width: 120px;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 5px #000;
+  white-space: nowrap;
+  margin-top: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+#deposit_btn:hover {
+  background-color: #9831ff;
 }
 
 .deposit_tokens {

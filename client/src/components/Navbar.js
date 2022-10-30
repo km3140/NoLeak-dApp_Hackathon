@@ -36,12 +36,12 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav_item">
-              <Link to="/" className="nav_link">
+              <Link to="/tran" className="nav_link">
                 거래내역
               </Link>
             </li>
             <li className="nav_item">
-              <Link to="/" className="nav_link">
+              <Link to="/user" className="nav_link">
                 구성원관리
               </Link>
             </li>

@@ -2,12 +2,27 @@ import "./App.css";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
+import UserPage from "./pages/UserPage";
 import Leftbar from "./components/Leftbar";
 import { useEffect, useState } from "react";
 import Transaction from "./pages/Transaction";
+import { MultisigContract } from "./abi/MultisigABI";
 
 function App() {
   const [priceObject, setPriceObject] = useState({});
+  const [contractBalance, setContractBalance] = useState("");
+
+  useEffect(() => {
+    const read = async () => {
+      const balance = await MultisigContract.methods
+        .getContractBalance()
+        .call();
+      setContractBalance(balance);
+    };
+    read();
+  }, []);
+
+  let contractBal = (contractBalance / 10 ** 18).toFixed(3);
 
   const tokens = [
     {
@@ -20,7 +35,7 @@ function App() {
       img: "https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/116_Ethereum_logo_logos-512.png",
       id: "ethereum",
       name: "ETH",
-      count: 10,
+      count: contractBal,
     },
   ];
 
@@ -52,6 +67,7 @@ function App() {
             element={<Dashboard priceObject={priceObject} tokens={tokens} />}
           />
           <Route path="/tran" element={<Transaction />} />
+          <Route path="/user" element={<UserPage />} />
         </Routes>
       </div>
     </>

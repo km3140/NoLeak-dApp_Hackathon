@@ -1,26 +1,23 @@
+import { ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useSelector } from "react-redux";
 import { MultisigContract } from "../abi/MultisigABI";
 import useInput from "../abi/UseInput";
-import { ethers } from "ethers";
 import "../styles/Modals.css";
-import { useSelector } from "react-redux";
 
-const AddTransModal = props => {
-  const [receiver, onChangeReceiver] = useInput("");
+function WithdrawModal(props) {
   const [amount, onChangeAmount] = useInput("");
   const [modalShow, setModalShow] = useState(true);
 
   const userAccount = useSelector(state => state.account);
 
-  const createTrans = async () => {
+  const withdrawAmount = async () => {
     await MultisigContract.methods
-      .createTrnasferRequest(receiver, ethers.utils.parseEther(amount))
-      .send({
-        from: userAccount,
-      });
+      .withdraw(ethers.utils.parseEther(amount))
+      .send({ from: userAccount });
     setModalShow(false);
   };
 
@@ -40,7 +37,7 @@ const AddTransModal = props => {
         >
           <Modal.Header closeButton className="deposit_modal">
             <Modal.Title id="contained-modal-title-vcenter">
-              거래 등록
+              자산 출금
             </Modal.Title>
           </Modal.Header>
           <Form>
@@ -50,23 +47,10 @@ const AddTransModal = props => {
             >
               <div className="modal_contents">
                 <div>
-                  <div>거래명</div>
-                  <div>받는사람 주소</div>
                   <div>토큰 선택</div>
                   <div>수량</div>
                 </div>
                 <div>
-                  <Form.Control
-                    size="sm"
-                    type="text"
-                    placeholder="ex) 기부금 전달"
-                  />
-                  <Form.Control
-                    size="sm"
-                    type="text"
-                    placeholder="ex) 0x..."
-                    onChange={onChangeReceiver}
-                  />
                   <Form.Select style={{ width: "6rem" }} size="sm">
                     <option>KLAY</option>
                     <option>ETH</option>
@@ -74,7 +58,6 @@ const AddTransModal = props => {
                   <Form.Control
                     style={{ width: "6rem" }}
                     size="sm"
-                    type="text"
                     placeholder="개수"
                     onChange={onChangeAmount}
                   />
@@ -82,8 +65,8 @@ const AddTransModal = props => {
               </div>
             </Modal.Body>
             <Modal.Footer className="deposit_modal">
-              <Button className="modal_btn" onClick={createTrans}>
-                거래 등록
+              <Button className="modal_btn" onClick={withdrawAmount}>
+                출금 하기
               </Button>
             </Modal.Footer>
           </Form>
@@ -91,6 +74,6 @@ const AddTransModal = props => {
       ) : null}
     </>
   );
-};
+}
 
-export default AddTransModal;
+export default WithdrawModal;

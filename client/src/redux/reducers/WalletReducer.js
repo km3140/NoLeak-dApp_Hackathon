@@ -2,12 +2,14 @@ import {
   WALLET_CONNECT,
   CONNECT_REFRESH,
   CONNECT_ERROR,
+  ADD_USER,
 } from "./WalletActions";
 
 const initialState = {
   loading: false,
   account: "",
   refresh: "",
+  name: "",
   error: "",
 };
 
@@ -25,6 +27,12 @@ const WalletReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         account: action.payload.account,
+      };
+
+    case ADD_USER:
+      return {
+        ...state,
+        name: action.payload.name,
       };
 
     case CONNECT_ERROR:

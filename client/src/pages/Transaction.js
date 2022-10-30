@@ -4,35 +4,43 @@ import { FaAngleDoubleRight } from "react-icons/fa";
 import { Button, ProgressBar } from "react-bootstrap";
 import "../styles/Transaction.css";
 import AddTransModal from "../components/AddTransModal";
+import { MultisigContract } from "../abi/MultisigABI";
+import { useSelector } from "react-redux";
 
 const Transaction = () => {
-  // 트렌젝션 정보
-  const tarnsInfo = [
-    {
-      name: "강사님 월급1",
-      receiver: "박민서",
-      amount: "$5",
-      agreeRate: 50,
-    },
-    {
-      name: "강사님 월급2",
-      receiver: "박민서",
-      amount: "$5",
-      agreeRate: 25,
-    },
-  ];
-
-  // (자세히보기, 메인으로) 토글기능
+  const [transactionRead, setTransactionRead] = useState([]);
   const [location, setLocation] = useState("");
+  const userAccount = useSelector(state => state.account);
+
   const getLocation = () => {
     setLocation(window.location.pathname);
   };
+
+  const transactionApproval = async () => {
+    await MultisigContract.methods
+      .approveTransferRequest(transactionRead.length - 1)
+      .send({ from: userAccount });
+  };
+
+  const transactionCancel = async () => {
+    await MultisigContract.methods
+      .cancelTransferRequest(transactionRead.length - 1)
+      .send({ from: userAccount });
+  };
+
   useEffect(() => {
     getLocation();
     window.scrollTo(0, 0);
   });
 
-  //모달창 토글
+  useEffect(() => {
+    const read = async () => {
+      const tran = await MultisigContract.methods.getTransferRequests().call();
+      setTransactionRead(tran);
+    };
+    read();
+  }, []);
+
   const [modalShow, setModalShow] = useState(false);
 
   return (
@@ -42,11 +50,11 @@ const Transaction = () => {
         <div>
           <Button
             variant="primary"
-            size="sm"
+            size="lg"
             id="deposit_btn"
             onClick={() => setModalShow(true)}
+            style={{ margin: "0.8rem" }}
           >
-            {/* 이 아이디값 말고는 효과가 안먹음;; */}
             거래 추가
           </Button>
           <AddTransModal show={modalShow} onHide={() => setModalShow(false)} />
@@ -64,24 +72,25 @@ const Transaction = () => {
             </Link>
           )}
         </div>
-        {tarnsInfo.map((cur, index) => {
+        {transactionRead.map((read, idx) => {
           return (
-            <div className="transaction" key={index}>
+            <div className="transaction" key={idx}>
               <div className="transaction_inner">
                 <div className="transaction_info">
-                  <div>거래명: {cur.name}</div>
-                  <div>받는사람: {cur.receiver}</div>
-                  <div>금액: {cur.amount}</div>
+                  <div>금액: {(read.amount / 10 ** 18).toFixed(3)} ETH</div>
+                  <div>승인된 수: {read.approvals}</div>
+                  <div>받는 주소: {read.receiver}</div>
+                  <div>보내는 주소: {read.sender}</div>
                 </div>
                 <div className="btns">
-                  <div>승인</div>
-                  <div>취소</div>
+                  <div onClick={transactionApproval}>승인</div>
+                  <div onClick={transactionCancel}>취소</div>
                 </div>
               </div>
               <ProgressBar
                 id="progress"
-                now={cur.agreeRate}
-                label={`${cur.agreeRate}%`}
+                now={read.agreeRate}
+                label={`${read.agreeRate}%`}
                 variant="warning"
               />
             </div>

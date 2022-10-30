@@ -37,7 +37,7 @@
   background-color: #f4f4f4;
   border-radius: 10px;
   width: 100%;
-  height: 100px;
+  height: 150px;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
   padding: 0.4rem 1rem;
@@ -50,11 +50,12 @@
 }
 
 .transaction_info {
+  padding: 1rem;
 }
 
 .transaction_info > div {
   width: fit-content;
-  margin-right: auto;
+  margin-bottom: 5px;
 }
 
 #progress {
@@ -80,11 +81,19 @@
   color: white;
   padding-top: 0.15rem;
 }
+.btns > div:first-of-type:hover {
+  background-color: #222;
+}
+
 .btns > div:last-of-type {
   background-color: white;
   color: black;
   padding-top: 0.15rem;
   border: 1px black solid;
+}
+
+.btns > div:last-of-type:hover {
+  background-color: rgb(240, 239, 239);
 }
 
 .add_trans_btn {

@@ -1,6 +1,7 @@
 export const WALLET_CONNECT = "WALLET_CONNECT";
 export const CONNECT_REFRESH = "CONNECT_REFRESH";
 export const CONNECT_ERROR = "CONNECT_ERROR";
+export const ADD_USER = "ADD_USER";
 
 const walletConnect = payload => {
   return {
@@ -12,6 +13,13 @@ const walletConnect = payload => {
 const connectRefresh = payload => {
   return {
     type: CONNECT_REFRESH,
+    payload,
+  };
+};
+
+const addUser = payload => {
+  return {
+    type: ADD_USER,
     payload,
   };
 };
@@ -51,4 +59,8 @@ export const getAddress = () => async dispatch => {
       dispatch(connectError(error.message));
     }
   }
+};
+
+export const addUserName = event => dispatch => {
+  dispatch(addUser({ name: event.target.value }));
 };
