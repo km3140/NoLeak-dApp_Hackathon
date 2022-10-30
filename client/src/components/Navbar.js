@@ -1,14 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-// import { FaBars } from 'react-icons/fa';
-// import { GoX } from 'react-icons/go';
-// import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import "../styles/Navbar.css";
+import { useDispatch, useSelector } from "react-redux";
+import { connect, getAddress } from "../redux/reducers/WalletActions";
 
-function Navbar({ walletConnect, Account }) {
-  let str = Account;
+function Navbar() {
+  const dispatch = useDispatch();
+  const walletConnect = () => {
+    dispatch(connect());
+  };
+  const userAccount = useSelector(state => state.account);
+  console.log(userAccount);
+
+  let str = userAccount;
   let acc = str.slice(0, 6) + " ..." + str.slice(38, 42).toUpperCase();
+
+  useEffect(() => {
+    if (userAccount !== null) {
+      dispatch(getAddress());
+    }
+  }, []);
 
   return (
     <>
@@ -17,7 +29,7 @@ function Navbar({ walletConnect, Account }) {
           <Link to="/" className="nav_logo">
             NO LEAK
           </Link>
-          <ul className={Account ? "nav_menu active" : "nav_menu"}>
+          <ul className={userAccount ? "nav_menu active" : "nav_menu"}>
             <li className="nav_item">
               <Link to="/" className="nav_link">
                 대시보드
@@ -35,7 +47,7 @@ function Navbar({ walletConnect, Account }) {
             </li>
           </ul>
           <div className="nav_connect" onClick={walletConnect}>
-            {Account ? (
+            {userAccount ? (
               <Button
                 variant="outline-warning"
                 style={{ whiteSpace: "nowrap" }}

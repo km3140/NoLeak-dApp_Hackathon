@@ -498,7 +498,7 @@ const MultisigABI = [
   },
 ];
 
-const MultisigAddress = "0x4CbB3A14e42208741da733A53cc314C834422B32";
+const MultisigAddress = "0x0e983e64323979405A8add96EC66c090E7BEAeC4";
 
 const web3 = new Web3(window.ethereum);
 

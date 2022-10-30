@@ -6,19 +6,21 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "../styles/Modals.css";
 import { MultisigContract } from "../abi/MultisigABI";
+import { useSelector } from "react-redux";
 
-function AddSafeModal(props, { Account }) {
+function AddSafeModal(props) {
   const [user, setUser] = useState("");
 
   const onChangeUser = e => {
     setUser(e.target.value);
     console.log(user);
   };
+  const userAccount = useSelector(state => state.account);
 
   const addUser = async () => {
     const add = await MultisigContract.methods
       .addWalletOwner(user)
-      .send({ from: Account });
+      .send({ from: userAccount });
     console.log(add);
 
     const userNum = await MultisigContract.methods.getWalletOners().call();

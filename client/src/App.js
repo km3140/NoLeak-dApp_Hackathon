@@ -2,50 +2,12 @@ import "./App.css";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard";
-import Menu from "./components/Leftbar";
+import Leftbar from "./components/Leftbar";
 import { useEffect, useState } from "react";
 import Transaction from "./pages/Transaction";
 
 function App() {
   const [priceObject, setPriceObject] = useState({});
-  const [userAccount, setUserAccount] = useState("");
-
-  let walletConnect = async () => {
-    try {
-      if (window.ethereum) {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        setUserAccount(accounts[0]);
-      } else {
-        alert("Install Metamask!");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const getCurrentWalletConnected = async () => {
-    if (window.ethereum) {
-      try {
-        const addressArray = await window.ethereum.request({
-          method: "eth_accounts",
-        });
-
-        if (addressArray.length > 0) {
-          setUserAccount(addressArray[0]);
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  };
-
-  useEffect(() => {
-    if (userAccount !== null) {
-      getCurrentWalletConnected();
-    }
-  }, []);
 
   const tokens = [
     {
@@ -81,8 +43,8 @@ function App() {
 
   return (
     <>
-      <Navbar walletConnect={walletConnect} Account={userAccount} />
-      <Menu Account={userAccount} />
+      <Navbar />
+      <Leftbar />
       <div style={{ marginLeft: "80px" }}>
         <Routes>
           <Route

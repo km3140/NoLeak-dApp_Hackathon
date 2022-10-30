@@ -1,10 +1,25 @@
-import React from "react";
+import { ethers } from "ethers";
+import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useSelector } from "react-redux";
+import { MultisigContract } from "../abi/MultisigABI";
+import useInput from "../abi/UseInput";
 import "../styles/Modals.css";
 
 function DepositModal(props) {
+  const [amount, onChangeAmount] = useInput("");
+
+  const userAccount = useSelector(state => state.account);
+
+  const depositAmount = async () => {
+    const deposit = await MultisigContract.methods
+      .deposit()
+      .send({ from: userAccount, value: ethers.utils.parseEther(amount) });
+    console.log(deposit);
+  };
+
   return (
     <Modal
       {...props}
@@ -37,14 +52,14 @@ function DepositModal(props) {
               <Form.Control
                 style={{ width: "6rem" }}
                 size="sm"
-                type="text"
                 placeholder="개수"
+                onChange={onChangeAmount}
               />
             </div>
           </div>
         </Modal.Body>
         <Modal.Footer className="deposit_modal">
-          <Button className="modal_btn" type="submit" onClick={props.onHide}>
+          <Button className="modal_btn" onClick={depositAmount}>
             보내기
           </Button>
         </Modal.Footer>
