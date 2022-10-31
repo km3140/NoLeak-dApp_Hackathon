@@ -31,14 +31,14 @@ const Piechart = ({ tokens, priceObject }) => {
         theme={{
           labels: {
             text: {
-              fontSize: 12,
+              fontSize: 16,
               fontWeight: 600,
               fill: "#000000",
             },
           },
           legends: {
             text: {
-              fontSize: 14,
+              fontSize: 16,
               fontWeight: 600,
               fill: "#000000",
             },

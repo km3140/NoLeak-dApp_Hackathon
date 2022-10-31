@@ -2,13 +2,15 @@
   text-align: center;
   padding: 0;
   padding-top: 1rem;
-  width: 67rem;
+  width: 70rem;
   margin: 0 auto;
 }
+
 .dashboard_area_lable {
   text-align: left;
   font-size: 2rem;
-  color: white;
+  color: #ffec40;
+  margin-bottom: 1rem;
 }
 
 .dashboard_area {
@@ -25,6 +27,7 @@
   height: 368px;
   display: flex;
   flex-direction: column;
+  padding-bottom: 1rem;
 }
 
 .tokens_lable {
@@ -66,4 +69,5 @@
   border-bottom: 1px black solid;
   padding: 0 20px;
   margin-top: 5px;
+  font-size: 1.2rem;
 }

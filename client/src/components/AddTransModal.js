@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -11,8 +11,6 @@ import { useSelector } from "react-redux";
 const AddTransModal = props => {
   const [receiver, onChangeReceiver] = useInput("");
   const [amount, onChangeAmount] = useInput("");
-  const [modalShow, setModalShow] = useState(true);
-
   const userAccount = useSelector(state => state.account);
 
   const createTrans = async () => {
@@ -21,74 +19,63 @@ const AddTransModal = props => {
       .send({
         from: userAccount,
       });
-    setModalShow(false);
   };
-
-  useEffect(() => {
-    setModalShow(true);
-  }, [modalShow]);
 
   return (
     <>
-      {modalShow ? (
-        <Modal
-          {...props}
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-          backdrop="static"
-          id="modal"
-        >
-          <Modal.Header closeButton className="deposit_modal">
-            <Modal.Title id="contained-modal-title-vcenter">
-              거래 등록
-            </Modal.Title>
-          </Modal.Header>
-          <Form>
-            <Modal.Body
-              className="deposit_modal"
-              style={{ padding: "1rem 2rem" }}
-            >
-              <div className="modal_contents">
-                <div>
-                  <div>거래명</div>
-                  <div>받는사람 주소</div>
-                  <div>토큰 선택</div>
-                  <div>수량</div>
-                </div>
-                <div>
-                  <Form.Control
-                    size="sm"
-                    type="text"
-                    placeholder="ex) 기부금 전달"
-                  />
-                  <Form.Control
-                    size="sm"
-                    type="text"
-                    placeholder="ex) 0x..."
-                    onChange={onChangeReceiver}
-                  />
-                  <Form.Select style={{ width: "6rem" }} size="sm">
-                    <option>KLAY</option>
-                    <option>ETH</option>
-                  </Form.Select>
-                  <Form.Control
-                    style={{ width: "6rem" }}
-                    size="sm"
-                    type="text"
-                    placeholder="개수"
-                    onChange={onChangeAmount}
-                  />
-                </div>
+      <Modal
+        {...props}
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        backdrop="static"
+        id="modal"
+      >
+        <Modal.Header closeButton className="deposit_modal">
+          <Modal.Title id="contained-modal-title-vcenter">
+            거래 등록
+          </Modal.Title>
+        </Modal.Header>
+        <Form>
+          <Modal.Body
+            className="deposit_modal"
+            style={{ padding: "1rem 2rem" }}
+          >
+            <div className="modal_contents">
+              <div>
+                <div>받는사람 주소</div>
+                <div>토큰 선택</div>
+                <div>수량</div>
               </div>
-            </Modal.Body>
-            <Modal.Footer className="deposit_modal">
-              <Button className="modal_btn" onClick={createTrans}>
-                거래 등록
-              </Button>
-            </Modal.Footer>
-          </Form>
-        </Modal>
-      ) : null}
+              <div>
+                <Form.Control
+                  size="sm"
+                  type="text"
+                  placeholder="0x..."
+                  className="modal_input"
+                  onChange={onChangeReceiver}
+                />
+                <Form.Select style={{ width: "6rem" }} size="sm">
+                  <option>ETH</option>
+                  <option>KLAY</option>
+                </Form.Select>
+                <Form.Control
+                  style={{ width: "6rem" }}
+                  size="sm"
+                  type="text"
+                  placeholder="개수"
+                  className="modal_input"
+                  onChange={onChangeAmount}
+                />
+              </div>
+            </div>
+          </Modal.Body>
+          <Modal.Footer className="deposit_modal">
+            <Button className="modal_btn" onClick={createTrans}>
+              거래 등록
+            </Button>
+          </Modal.Footer>
+        </Form>
+      </Modal>
     </>
   );
 };

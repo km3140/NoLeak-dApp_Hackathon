@@ -4,6 +4,10 @@
   color: #fec431;
 }
 
+.modal_input:hover {
+  background-color: #eee5f7;
+}
+
 .modal_btn {
   color: #fec431;
   background-color: #8000ff;
@@ -13,7 +17,7 @@
 
 .modal_btn:hover {
   color: #fec431;
-  background-color: #8000ff;
+  background-color: #9638f5;
   border: 1px #8000ff solid;
   cursor: pointer;
 }

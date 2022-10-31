@@ -6,6 +6,8 @@ import "../styles/Transaction.css";
 import AddTransModal from "../components/AddTransModal";
 import { MultisigContract } from "../abi/MultisigABI";
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoneyCheckDollar } from "@fortawesome/free-solid-svg-icons";
 
 const Transaction = () => {
   const [transactionRead, setTransactionRead] = useState([]);
@@ -45,7 +47,14 @@ const Transaction = () => {
 
   return (
     <div className="transaction_container" style={{ marginBottom: "25px" }}>
-      <div className="transaction_area_lable">승인대기 거래</div>
+      <div className="transaction_area_lable">
+        승인대기 거래{" "}
+        <FontAwesomeIcon
+          icon={faMoneyCheckDollar}
+          size="1x"
+          style={{ paddingTop: "10px", color: "#ffdd40" }}
+        />
+      </div>
       <div className="transaction_area">
         <div>
           <Button
@@ -78,9 +87,9 @@ const Transaction = () => {
               <div className="transaction_inner">
                 <div className="transaction_info">
                   <div>금액: {(read.amount / 10 ** 18).toFixed(3)} ETH</div>
-                  <div>승인된 수: {read.approvals}</div>
-                  <div>받는 주소: {read.receiver}</div>
-                  <div>보내는 주소: {read.sender}</div>
+                  <div>승인된 수: {read.approvals}/3</div>
+                  <div>받는사람 주소: {read.receiver}</div>
+                  <div>보내는사람 주소: {read.sender}</div>
                 </div>
                 <div className="btns">
                   <div onClick={transactionApproval}>승인</div>
@@ -89,8 +98,8 @@ const Transaction = () => {
               </div>
               <ProgressBar
                 id="progress"
-                now={read.agreeRate}
-                label={`${read.agreeRate}%`}
+                now={read.approvals * 33}
+                label={`${read.approvals * 33}%`}
                 variant="warning"
               />
             </div>
